@@ -2,9 +2,13 @@ package org.raj.test.rest;
 
 import java.util.ArrayList;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -29,15 +33,32 @@ public class DataRepo {
 	@Path("data/{id}")
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public Data getData(int id) {
+	public Data getData(@PathParam("id") int id) {
 		System.out.println("one data called with id = "+id);
 		return raj.getData(id);
 	}
 	
 	@POST
 	@Path("data")
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public void create(Data d) {
 		System.out.println("one data created");
 		raj.createData(d);
+	}
+	@PUT
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	public void update(Data d) {
+		System.out.println("one data updated");
+		raj.updateData(d);
+	}
+	@DELETE
+	@Path("repo/data/{id}")
+	public Data delete(@PathParam("id") int id) {
+		Data a = raj.getData(id);
+		if(a==null) {
+			return null;
+		}
+		raj.delete(a);
+		return a;
 	}
 }

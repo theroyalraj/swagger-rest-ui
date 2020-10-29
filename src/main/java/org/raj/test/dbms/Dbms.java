@@ -52,7 +52,7 @@ public class Dbms {
 	}
 	
 	public Data getData(int id) {
-		Data d  =new Data();
+		Data d = new Data();
 		sql = "select * from raj where id = "+id;
 		Statement st;
 		try {
@@ -66,12 +66,13 @@ public class Dbms {
 		} catch (Exception e) {
 			System.out.println(67+" ->"+e);
 			e.printStackTrace();
+			return null;	
 		}
 		return d;
 	}
 
 	public void createData(Data d) {
-		sql = "insert into raj values(?,?,?)";
+		sql = "insert into raj values(?,?,?);";
 		PreparedStatement st;
 		try {
 			st = con.prepareStatement(sql);
@@ -85,6 +86,36 @@ public class Dbms {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public void updateData(Data d) {
+		sql = "update raj set name = ?,value=? WHERE id=?;";
+		PreparedStatement st;
+		try {
+			st = con.prepareStatement(sql);
+//			ResultSet rs =st.executeQuery();
+			st.setString(1,d.getName());
+			st.setInt(2, d.getValue());
+			st.setInt(3, d.getId());
+			
+			st.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void delete(Data d) {
+		sql = "DELETE from raj WHERE id=?";
+		PreparedStatement st;
+		try {
+			st = con.prepareStatement(sql);
+			st.setInt(1, d.getId());
+			st.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
