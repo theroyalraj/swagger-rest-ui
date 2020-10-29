@@ -1,4 +1,4 @@
-package org.raj.test.service;
+package org.raj.test.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

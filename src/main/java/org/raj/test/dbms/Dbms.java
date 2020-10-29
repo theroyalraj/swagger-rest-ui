@@ -1,4 +1,4 @@
-package org.raj.test.resource;
+package org.raj.test.dbms;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,29 +9,29 @@ import java.util.ArrayList;
 
 import org.raj.test.model.Data;
 
-public class Raj {
+public class Dbms {
 	private ArrayList<Data> list = new ArrayList<>();
 	String sql = null;
 	Connection con =null;
-	public Raj() {
+	public Dbms() {
 		
-		String url = "jdbc:mysql://localhost:3306/raj";
-		String username = "root";
-		String password = "password";
+		String url = "jdbc:mysql://remotemysql.com:3306/TWGJR6N4cw";
+		String username = "TWGJR6N4cw";
+		String password = "bwQP8xAzFd";
 		try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection(url, username, password);
 			
 		}  catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(23+" ->"+e);
+			System.out.println(27+" ->"+e);
 			e.printStackTrace();
 		}
 	}
 	
 	public ArrayList<Data> getAll() {
 		list.clear();
-		sql = "select * from raj";
+		sql = "SELECT * from raj;";
 		Statement st;
 		try {
 			st = con.createStatement();
@@ -45,7 +45,7 @@ public class Raj {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(44+" ->"+e);
+			System.out.println(48+" ->"+e);
 			e.printStackTrace();
 		}
 		return list;
@@ -64,7 +64,7 @@ public class Raj {
 				d.setValue(rs.getInt(3));
 			}
 		} catch (Exception e) {
-			System.out.println(63+" ->"+e);
+			System.out.println(67+" ->"+e);
 			e.printStackTrace();
 		}
 		return d;

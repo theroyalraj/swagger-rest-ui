@@ -19,7 +19,7 @@
     <description></description>
     <display-name>SwaggerConfigurationServlet</display-name>
     <servlet-name>SwaggerConfigurationServlet</servlet-name> 
-    <servlet-class>org.raj.test.service.SwaggerConfigurationServlet</servlet-class>
+    <servlet-class>org.raj.test.rest.SwaggerConfigurationServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
  

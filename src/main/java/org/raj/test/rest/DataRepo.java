@@ -1,4 +1,4 @@
-package org.raj.test.service;
+package org.raj.test.rest;
 
 import java.util.ArrayList;
 
@@ -8,8 +8,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.raj.test.dbms.Dbms;
 import org.raj.test.model.Data;
-import org.raj.test.resource.Raj;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.SwaggerDefinition;
@@ -18,7 +18,7 @@ import io.swagger.annotations.Tag;
 @Api("/repo")
 @SwaggerDefinition(tags= {@Tag(name="Test Service",description="REST IMPL")})
 public class DataRepo {
-	Raj raj = new Raj();
+	Dbms raj = new Dbms();
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -30,7 +30,7 @@ public class DataRepo {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Data getData(int id) {
-		System.out.println("one data called id = "+id);
+		System.out.println("one data called with id = "+id);
 		return raj.getData(id);
 	}
 	

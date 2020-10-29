@@ -1,4 +1,4 @@
-package org.raj.test.service;
+package org.raj.test.rest;
 
 import java.io.IOException;
 
