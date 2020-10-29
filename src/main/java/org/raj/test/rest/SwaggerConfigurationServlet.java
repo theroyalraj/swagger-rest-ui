@@ -19,7 +19,7 @@ public class SwaggerConfigurationServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		BeanConfig beanConfig = new BeanConfig();
-		beanConfig.setBasePath("/test/webapi");
+		beanConfig.setBasePath("/swagger-rest-ui/webapi");
 		beanConfig.setHost("localhost:8080");
 		beanConfig.setTitle("Test Swagger Implementation");
 		beanConfig.setResourcePackage("org.raj.test");
